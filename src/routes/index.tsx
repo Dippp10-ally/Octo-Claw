@@ -14,7 +14,12 @@ import {
   ShieldCheck,
   Cpu,
   Workflow,
+  LogOut,
+  Loader2,
 } from "lucide-react";
+import { useAuth } from "@/hooks/use-auth";
+import { AuthGate } from "@/components/AuthGate";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/")({
   component: Index,
