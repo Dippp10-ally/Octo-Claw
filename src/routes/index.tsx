@@ -9,12 +9,17 @@ import {
   Bug,
   Rocket,
   Sparkles,
-  Github,
+  
   Database,
   ShieldCheck,
   Cpu,
   Workflow,
+  LogOut,
+  Loader2,
 } from "lucide-react";
+import { useAuth } from "@/hooks/use-auth";
+import { AuthGate } from "@/components/AuthGate";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -63,6 +68,18 @@ const stack = [
 ];
 
 function Index() {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background">
+        <Loader2 className="h-6 w-6 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (!user) return <AuthGate />;
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-hidden">
       {/* Nav */}
@@ -78,13 +95,16 @@ function Index() {
           <a href="#agents" className="transition-smooth hover:text-foreground">Agents</a>
           <a href="#stack" className="transition-smooth hover:text-foreground">Stack</a>
         </nav>
-        <a
-          href="#flow"
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-4 py-2 text-sm backdrop-blur transition-smooth hover:border-primary hover:shadow-glow"
-        >
-          <Github className="h-4 w-4" />
-          Explore
-        </a>
+        <div className="flex items-center gap-3">
+          <span className="hidden text-xs text-muted-foreground sm:inline">{user.email}</span>
+          <button
+            onClick={() => supabase.auth.signOut()}
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-4 py-2 text-sm backdrop-blur transition-smooth hover:border-primary hover:shadow-glow"
+          >
+            <LogOut className="h-4 w-4" />
+            Sign out
+          </button>
+        </div>
       </header>
 
       {/* Hero */}
