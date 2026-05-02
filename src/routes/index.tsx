@@ -9,7 +9,7 @@ import {
   Bug,
   Rocket,
   Sparkles,
-  Github,
+  
   Database,
   ShieldCheck,
   Cpu,
