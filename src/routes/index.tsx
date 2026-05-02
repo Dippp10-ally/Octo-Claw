@@ -20,6 +20,7 @@ import {
 import { useAuth } from "@/hooks/use-auth";
 import { AuthGate } from "@/components/AuthGate";
 import { supabase } from "@/integrations/supabase/client";
+import logo from "@/assets/octoclaw-logo.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -84,11 +85,9 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground overflow-hidden">
       {/* Nav */}
       <header className="relative z-20 mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
-        <div className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-primary shadow-glow">
-            <Sparkles className="h-5 w-5 text-primary-foreground" />
-          </div>
-          <span className="text-lg font-semibold tracking-tight">forge.ai</span>
+        <div className="flex items-center gap-3">
+          <img src={logo} alt="Octoclaw logo" className="h-10 w-10 drop-shadow-[0_0_12px_oklch(0.72_0.18_295_/_0.6)]" />
+          <span className="text-lg font-semibold tracking-tight">octoclaw</span>
         </div>
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
           <a href="#flow" className="transition-smooth hover:text-foreground">Flow</a>
