@@ -149,3 +149,51 @@
     color: var(--color-foreground);
   }
 }
+
+@layer utilities {
+  .bg-gradient-primary { background: var(--gradient-primary); }
+  .text-gradient-primary {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .bg-gradient-card { background: var(--gradient-card); }
+  .bg-gradient-glow { background: var(--gradient-glow); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-elegant { box-shadow: var(--shadow-elegant); }
+  .transition-smooth { transition: var(--transition-smooth); }
+
+  .grid-pattern {
+    background-image:
+      linear-gradient(oklch(0.72 0.18 295 / 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.72 0.18 295 / 0.08) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) }
+  50% { transform: translateY(-12px) }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; transform: scale(1) }
+  50% { opacity: 1; transform: scale(1.05) }
+}
+@keyframes flow-line {
+  0% { stroke-dashoffset: 200 }
+  100% { stroke-dashoffset: 0 }
+}
+@keyframes type-cursor {
+  0%, 50% { opacity: 1 }
+  51%, 100% { opacity: 0 }
+}
+.animate-float { animation: float-slow 6s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+.animate-flow { stroke-dasharray: 8 8; animation: flow-line 4s linear infinite; }
+.animate-cursor::after {
+  content: '▊';
+  margin-left: 2px;
+  animation: type-cursor 1s steps(1) infinite;
+  color: var(--primary);
+}
