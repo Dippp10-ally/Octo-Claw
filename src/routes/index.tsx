@@ -8,8 +8,6 @@ import {
   Eye,
   Bug,
   Rocket,
-  Rocket,
-  
   Database,
   ShieldCheck,
   Cpu,
