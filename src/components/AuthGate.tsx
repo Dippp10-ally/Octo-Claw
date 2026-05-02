@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Sparkles, Mail, Loader2 } from "lucide-react";
+import { Mail, Loader2 } from "lucide-react";
+import logo from "@/assets/octoclaw-logo.png";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
 import { toast } from "sonner";
@@ -59,11 +60,13 @@ export function AuthGate() {
 
       <div className="relative w-full max-w-md">
         <div className="mb-8 text-center">
-          <div className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-primary shadow-glow">
-            <Sparkles className="h-6 w-6 text-primary-foreground" />
-          </div>
+          <img
+            src={logo}
+            alt="Octoclaw logo"
+            className="mx-auto mb-5 h-20 w-20 drop-shadow-[0_0_24px_oklch(0.72_0.18_295_/_0.7)]"
+          />
           <h1 className="text-3xl font-bold tracking-tight">
-            Welcome to <span className="text-gradient-primary">forge.ai</span>
+            Welcome to <span className="text-gradient-primary">octoclaw</span>
           </h1>
           <p className="mt-2 text-sm text-muted-foreground">
             {mode === "signin" ? "Sign in to continue" : "Create an account to continue"}
