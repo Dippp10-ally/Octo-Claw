@@ -8,7 +8,7 @@ import {
   Eye,
   Bug,
   Rocket,
-  Sparkles,
+  Rocket,
   
   Database,
   ShieldCheck,
